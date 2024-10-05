@@ -11,6 +11,6 @@ namespace CommonLayer.Entities
         public int Id { get; set; }
         public string PositionName { get; set; }
         public int BaseSalary { get; set; }
-        public int HierarchyLevel { get; set; } 
+        public int DepartmentId { get; set; }
     }
 }
