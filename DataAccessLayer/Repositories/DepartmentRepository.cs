@@ -15,23 +15,33 @@ namespace DataAccessLayer.Repositories
             _dbConnection = new SqlDataAccess();
         }
 
-        public DataTable GetDepartments()
+        public List<Department> GetDepartments()
         {
-            DataTable departmentsTable = new DataTable();
+            List<Department> departments = new List<Department>();
 
             using (var connection = _dbConnection.GetConnection())
             {
-                string query = "SELECT DepartmentID, DepartmentName, Description FROM Departments";
+                string query = "SELECT Id, DepartmentName, Description FROM Departments";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 connection.Open();
 
                 SqlDataReader reader = command.ExecuteReader();
-                departmentsTable.Load(reader);
+
+                while (reader.Read())
+                {
+                    Department department = new Department();
+                    department.Id = (int)reader["Id"];
+                    department.DepartmentName = (string)reader["DepartmentName"];
+                    department.Description = reader["Description"] != DBNull.Value ? (string)reader["Description"] : null;
+
+                    departments.Add(department);
+                }
             }
 
-            return departmentsTable;
+            return departments;
         }
+
 
         public void AddDepartment(Department department)
         {
@@ -40,7 +50,7 @@ namespace DataAccessLayer.Repositories
                 string query = "INSERT INTO Departments (DepartmentName, Description) VALUES (@DepartmentName, @Description)";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@DepartmentName", department.DepartmentName);
-                command.Parameters.AddWithValue("@Description", department.Description ?? (object)DBNull.Value);
+                command.Parameters.AddWithValue("@Description", (object)department.Description ?? DBNull.Value);
                 connection.Open();
 
                 command.ExecuteNonQuery();
@@ -51,24 +61,24 @@ namespace DataAccessLayer.Repositories
         {
             using (var connection = _dbConnection.GetConnection())
             {
-                string query = "UPDATE Departments SET DepartmentName = @DepartmentName, Description = @Description WHERE DepartmentID = @DepartmentID";
+                string query = "UPDATE Departments SET DepartmentName = @DepartmentName, Description = @Description WHERE Id = @Id";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@DepartmentName", department.DepartmentName);
-                command.Parameters.AddWithValue("@Description", department.Description ?? (object)DBNull.Value);
-                command.Parameters.AddWithValue("@DepartmentID", department.DepartmentID);
+                command.Parameters.AddWithValue("@Description", (object)department.Description ?? DBNull.Value);
+                command.Parameters.AddWithValue("@Id", department.Id);
                 connection.Open();
 
                 command.ExecuteNonQuery();
             }
         }
 
-        public void DeleteDepartment(int departmentID)
+        public void DeleteDepartment(int id)
         {
             using (var connection = _dbConnection.GetConnection())
             {
-                string query = "DELETE FROM Departments WHERE DepartmentID = @DepartmentID";
+                string query = "DELETE FROM Departments WHERE Id = @Id";
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@DepartmentID", departmentID);
+                command.Parameters.AddWithValue("@Id", id);
                 connection.Open();
 
                 command.ExecuteNonQuery();
