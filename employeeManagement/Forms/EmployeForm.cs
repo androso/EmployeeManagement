@@ -12,9 +12,23 @@ namespace PresentationLayer.Forms
 {
     public partial class EmployeForm : Form
     {
-        public EmployeForm()
+        MainForm mainForm;
+        public EmployeForm(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void EmployeForm_Load(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            mainForm.Show();
+            this.Close();
         }
     }
 }
