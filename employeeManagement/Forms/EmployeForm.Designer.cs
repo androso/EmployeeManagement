@@ -37,19 +37,19 @@
             dateTimePicker2 = new DateTimePicker();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
-            btnSalir = new Button();
             pictureBox1 = new PictureBox();
-            btnEliminar = new Button();
             btnGuardar = new Button();
-            btnEditar = new Button();
+            groupBox1 = new GroupBox();
+            btnSalir = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(488, 256);
+            label1.Location = new Point(65, 199);
             label1.Name = "label1";
             label1.Size = new Size(209, 24);
             label1.TabIndex = 0;
@@ -59,7 +59,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(460, 336);
+            label2.Location = new Point(37, 282);
             label2.Name = "label2";
             label2.Size = new Size(237, 24);
             label2.TabIndex = 1;
@@ -69,7 +69,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(433, 436);
+            label3.Location = new Point(10, 379);
             label3.Name = "label3";
             label3.Size = new Size(264, 24);
             label3.TabIndex = 2;
@@ -79,7 +79,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(579, 532);
+            label4.Location = new Point(156, 475);
             label4.Name = "label4";
             label4.Size = new Size(118, 24);
             label4.TabIndex = 3;
@@ -87,109 +87,97 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(735, 336);
+            dateTimePicker1.Location = new Point(312, 279);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(291, 27);
+            dateTimePicker1.Size = new Size(309, 27);
             dateTimePicker1.TabIndex = 4;
             // 
             // dateTimePicker2
             // 
-            dateTimePicker2.Location = new Point(735, 433);
+            dateTimePicker2.Location = new Point(312, 376);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(291, 27);
+            dateTimePicker2.Size = new Size(309, 27);
             dateTimePicker2.TabIndex = 5;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(735, 526);
+            textBox1.Location = new Point(312, 469);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(217, 34);
+            textBox1.Size = new Size(235, 34);
             textBox1.TabIndex = 6;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(735, 255);
+            textBox2.Location = new Point(312, 199);
             textBox2.Multiline = true;
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(503, 34);
+            textBox2.Size = new Size(411, 34);
             textBox2.TabIndex = 7;
-            // 
-            // btnSalir
-            // 
-            btnSalir.Font = new Font("Stencil", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSalir.Location = new Point(735, 632);
-            btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(94, 29);
-            btnSalir.TabIndex = 8;
-            btnSalir.Text = "Salir";
-            btnSalir.UseVisualStyleBackColor = true;
-            btnSalir.Click += btnSalir_Click;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(705, 74);
+            pictureBox1.Location = new Point(282, 36);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(138, 123);
+            pictureBox1.Size = new Size(156, 123);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 9;
             pictureBox1.TabStop = false;
             // 
-            // btnEliminar
-            // 
-            btnEliminar.Font = new Font("Stencil", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEliminar.Location = new Point(1346, 12);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(94, 29);
-            btnEliminar.TabIndex = 10;
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = true;
-            // 
             // btnGuardar
             // 
             btnGuardar.Font = new Font("Stencil", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGuardar.Location = new Point(1226, 12);
+            btnGuardar.Location = new Point(540, 613);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(99, 29);
+            btnGuardar.Size = new Size(131, 35);
             btnGuardar.TabIndex = 11;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
             // 
-            // btnEditar
+            // groupBox1
             // 
-            btnEditar.Font = new Font("Stencil", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEditar.Location = new Point(1110, 12);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(94, 29);
-            btnEditar.TabIndex = 12;
-            btnEditar.Text = "Editar";
-            btnEditar.UseVisualStyleBackColor = true;
+            groupBox1.Controls.Add(btnSalir);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(btnGuardar);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(pictureBox1);
+            groupBox1.Controls.Add(dateTimePicker1);
+            groupBox1.Controls.Add(dateTimePicker2);
+            groupBox1.Controls.Add(textBox2);
+            groupBox1.Controls.Add(textBox1);
+            groupBox1.Location = new Point(386, 23);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(741, 672);
+            groupBox1.TabIndex = 13;
+            groupBox1.TabStop = false;
+            // 
+            // btnSalir
+            // 
+            btnSalir.Font = new Font("Stencil", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSalir.Location = new Point(65, 613);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(133, 37);
+            btnSalir.TabIndex = 18;
+            btnSalir.Text = "Salir";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click_1;
             // 
             // EmployeForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1472, 717);
-            Controls.Add(btnEditar);
-            Controls.Add(btnGuardar);
-            Controls.Add(btnEliminar);
-            Controls.Add(pictureBox1);
-            Controls.Add(btnSalir);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(1472, 786);
+            Controls.Add(groupBox1);
             Name = "EmployeForm";
             Text = "EmployeForm";
-            Load += EmployeForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -202,10 +190,9 @@
         private DateTimePicker dateTimePicker2;
         private TextBox textBox1;
         private TextBox textBox2;
-        private Button btnSalir;
         private PictureBox pictureBox1;
-        private Button btnEliminar;
         private Button btnGuardar;
-        private Button btnEditar;
+        private GroupBox groupBox1;
+        private Button btnSalir;
     }
 }

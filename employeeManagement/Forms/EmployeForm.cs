@@ -19,13 +19,19 @@ namespace PresentationLayer.Forms
             this.mainForm = mainForm;
         }
 
-        private void EmployeForm_Load(object sender, EventArgs e)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
-
-
+            mainForm.Show();
+            this.Close();
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            mainForm.Show();
+            base.OnFormClosed(e);
+        }
+
+        private void btnSalir_Click_1(object sender, EventArgs e)
         {
             mainForm.Show();
             this.Close();
