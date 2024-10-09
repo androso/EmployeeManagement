@@ -52,8 +52,8 @@ namespace PresentationLayer.Forms
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close(); // Close the current form
-            mainForm.Show(); // Show the main form
+            this.Close(); 
+            mainForm.Show(); 
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

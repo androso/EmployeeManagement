@@ -27,9 +27,10 @@ namespace PresentationLayer.Forms
         }
         private void LoadEmployeeData()
         {
+            comboBox1.SelectedValue = "Empleado";
+            comboBox1.Text = "Empleado";
             dataGridView1.DataSource = _employeeService.GetAllEmployees();
         }
-
 
         private void btnEmploye_Click(object sender, EventArgs e)
         {
@@ -51,10 +52,8 @@ namespace PresentationLayer.Forms
             departmentForm.Show();
             this.Hide();
         }
-
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            // Validar si hay un registro seleccionado
             if (comboBox1.SelectedIndex == -1)
             {
                 MessageBox.Show("Seleccione un tipo de datos");
@@ -67,7 +66,7 @@ namespace PresentationLayer.Forms
                 string selectedValue = comboBox1.SelectedItem.ToString();
 
                 // Si es empleado, abrir el formulario de empleado con los datos del empleado seleccionado
-                
+
                 if (selectedValue == "Empleado")
                 {
                     Employee selectedEmployee = dataGridView1.SelectedRows[0].DataBoundItem as Employee;
@@ -130,10 +129,56 @@ namespace PresentationLayer.Forms
             else if (selectedValue == "Empleado")
             {
                 dataGridView1.DataSource = _employeeService.GetAllEmployees();
-            } else
+            }
+            else
             {
                 MessageBox.Show("Seleccione una opción");
             }
-         }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                string selectedValue = comboBox1.SelectedItem.ToString();
+                object selectedItem = dataGridView1.SelectedRows[0].DataBoundItem;
+
+                
+                switch (selectedValue)
+                {
+                    case "Empleado":
+                        if (MessageBox.Show("¿Está seguro de que desea eliminar este registro?", "Confirmar eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            Employee selectedEmployee = selectedItem as Employee;
+                            _employeeService.DeleteEmployee(selectedEmployee.Id);
+                            LoadEmployeeData();
+                        } 
+                        break;
+                    case "Departamento":
+                        Department selectedDepartment = selectedItem as Department;
+                        if (MessageBox.Show("Si elimina este departamento, se eliminarán todos los empleados y posiciones asociados. ¿Está seguro de que desea continuar?", "Confirmar eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            _departmentService.DeleteDepartment(selectedDepartment.Id);
+                            LoadEmployeeData();
+                        }
+                        break;
+                    case "Posición":
+                        if (MessageBox.Show("Si elimina esta posición, se eliminarán todos los empleados asociados. ¿Está seguro de que desea continuar?", "Confirmar eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            Position selectedPosition = selectedItem as Position;
+                            _positionService.DeletePosition(selectedPosition.Id);
+                            LoadEmployeeData();
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un registro");
+            }
+        }
     }
 }

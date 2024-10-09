@@ -42,5 +42,12 @@ SELECT * FROM Positions;
 INSERT INTO Employees (FullName, DateOfBirth, HireDate, Phone, PositionId)
 VALUES ('María García', '1985-07-15', '2023-09-01', '(555) 123-4567', 1);
 SELECT * FROM Employees;
+
+-- Insertar un nuevo empleado
+INSERT INTO Employees (FullName, DateOfBirth, HireDate, Phone, PositionId)
+VALUES ('María García', '1985-07-15', '2023-09-01', '(555) 123-4567', 1);
+
+SELECT * FROM Employees;
 */
 
+SELECT * FROM Positions;

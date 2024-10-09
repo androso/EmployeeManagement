@@ -35,7 +35,6 @@
             dataGridView1 = new DataGridView();
             btnEditar = new Button();
             btnEliminar = new Button();
-            btnGuardar = new Button();
             comboBox1 = new ComboBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -88,7 +87,7 @@
             // btnEditar
             // 
             btnEditar.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEditar.Location = new Point(365, 618);
+            btnEditar.Location = new Point(564, 618);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(112, 46);
             btnEditar.TabIndex = 16;
@@ -99,22 +98,13 @@
             // btnEliminar
             // 
             btnEliminar.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEliminar.Location = new Point(611, 618);
+            btnEliminar.Location = new Point(715, 618);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(121, 46);
             btnEliminar.TabIndex = 18;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
-            // 
-            // btnGuardar
-            // 
-            btnGuardar.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGuardar.Location = new Point(881, 618);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(122, 45);
-            btnGuardar.TabIndex = 19;
-            btnGuardar.Text = "Guardar";
-            btnGuardar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // comboBox1
             // 
@@ -169,7 +159,6 @@
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);
             Controls.Add(comboBox1);
-            Controls.Add(btnGuardar);
             Controls.Add(btnEliminar);
             Controls.Add(btnEditar);
             Controls.Add(dataGridView1);
@@ -193,7 +182,6 @@
         private DataGridView dataGridView1;
         private Button btnEditar;
         private Button btnEliminar;
-        private Button btnGuardar;
         private ComboBox comboBox1;
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
