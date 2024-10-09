@@ -33,12 +33,15 @@ namespace DataAccessLayer.Repositories
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    Position position = new Position();
-                    position.Id = (int)reader["Id"];
-                    position.PositionName = (string)reader["PositionName"];
-                    position.BaseSalary = (int)reader["BaseSalary"];
-                    position.DepartmentId = (int)reader["DepartmentId"];
+                    Position position = new Position
+                    {
+                        Id = (int)reader["Id"],
+                        PositionName = (string)reader["PositionName"],
+                        BaseSalary = (int)(decimal)reader["BaseSalary"],
+                        DepartmentId = (int)reader["DepartmentId"]
+                    };
 
+                    positions.Add(position);
                     positions.Add(position);
                 }
             }

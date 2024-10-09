@@ -13,7 +13,7 @@ namespace DataAccessLayer.DbConnection
 
         public SqlDataAccess()
         {
-            _connectionString = "";
+            _connectionString = "Data Source=ARTEMUS\\SQLEXPRESS;Initial Catalog=EmployeeManagement;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
         }
 
         public SqlConnection GetConnection()

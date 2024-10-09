@@ -87,7 +87,7 @@
             // 
             // btnEditar
             // 
-            btnEditar.Font = new Font("Stencil", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEditar.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEditar.Location = new Point(365, 618);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(112, 46);
@@ -98,7 +98,7 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Font = new Font("Stencil", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEliminar.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEliminar.Location = new Point(611, 618);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(121, 46);
@@ -108,7 +108,7 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Font = new Font("Stencil", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnGuardar.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnGuardar.Location = new Point(881, 618);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(122, 45);
@@ -125,6 +125,7 @@
             comboBox1.Size = new Size(243, 28);
             comboBox1.TabIndex = 20;
             comboBox1.Text = "Seleccionar Datos";
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // pictureBox2
             // 
