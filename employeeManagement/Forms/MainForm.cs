@@ -74,7 +74,7 @@ namespace PresentationLayer.Forms
                     {
                         EditEmployee employeForm = new EditEmployee(this, selectedEmployee);
                         employeForm.Show();
-                        this.Hide();
+                        employeForm.FormClosed += (s, args) => LoadEmployeeData();
                     }
                     else
                     {
@@ -85,12 +85,11 @@ namespace PresentationLayer.Forms
                 else if (selectedValue == "Departamento")
                 {
                     // Obtener el departamento seleccionado
-                    //Department selectedDepartment = (Department)dataGridView1.SelectedRows[0].DataBoundItem;
+                    Department selectedDepartment = dataGridView1.SelectedRows[0].DataBoundItem as  Department;
 
-                    // Abrir el formulario de departamento con los datos del departamento seleccionado
-                    //DepartmentForm departmentForm = new DepartmentForm(this, selectedDepartment);
-                    //departmentForm.Show();
-                    //this.Hide();
+                    EditDepartment editDepartmentForm = new EditDepartment(this, selectedDepartment);
+                    editDepartmentForm.Show();
+                    editDepartmentForm.FormClosed += (s, args) => dataGridView1.DataSource = _departmentService.GetAllDepartments();
                 }
                 // Si es posición, abrir el formulario de posición con los datos de la posición seleccionada
                 else if (selectedValue == "Posición")
@@ -108,6 +107,16 @@ namespace PresentationLayer.Forms
             {
                 MessageBox.Show("Seleccione un registro");
             }
+        }
+
+        private void EmployeForm_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void EditDepartmentForm_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
