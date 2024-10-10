@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             editDepartmentGroupbox = new GroupBox();
             departmentDescriptionTextBox = new RichTextBox();
             editDepartmentTitle = new Label();
@@ -36,7 +37,9 @@
             departmentTitleLabel = new Label();
             btnGuardar = new Button();
             departmentNameTextbox = new TextBox();
+            validationErrorProvider = new ErrorProvider(components);
             editDepartmentGroupbox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)validationErrorProvider).BeginInit();
             SuspendLayout();
             // 
             // editDepartmentGroupbox
@@ -122,6 +125,10 @@
             departmentNameTextbox.Size = new Size(382, 34);
             departmentNameTextbox.TabIndex = 7;
             // 
+            // validationErrorProvider
+            // 
+            validationErrorProvider.ContainerControl = this;
+            // 
             // EditDepartment
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -132,6 +139,7 @@
             Text = "EditDepartment";
             editDepartmentGroupbox.ResumeLayout(false);
             editDepartmentGroupbox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)validationErrorProvider).EndInit();
             ResumeLayout(false);
         }
 
@@ -153,5 +161,6 @@
         private TextBox departmentNameTextbox;
         private RichTextBox departmentDescriptionTextBox;
         private TextBox phone;
+        private ErrorProvider validationErrorProvider;
     }
 }

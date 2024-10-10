@@ -1,5 +1,7 @@
 ﻿using BusinessLayer.Services;
 using CommonLayer.Entities;
+using FluentValidation.Results;
+using PresentationLayer.Validations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,12 +36,37 @@ namespace PresentationLayer.Forms
             _department.DepartmentName = departmentNameTextbox.Text;
             _department.Description = departmentDescriptionTextBox.Text;
 
-            _departmentService.UpdateDepartment(_department);
+            DepartmentValidator depValidator = new DepartmentValidator();
+            ValidationResult results = depValidator.Validate(_department);
 
+            if (!results.IsValid)
+            {
+                DisplayValidationErrors(results);
+                return;
+            }
+
+            _departmentService.UpdateDepartment(_department);
+            
             this.Close();
 
         }
+        private void DisplayValidationErrors(ValidationResult result)
+        {
+            validationErrorProvider.Clear();
 
+            foreach (var error in result.Errors)
+            {
+                switch (error.PropertyName)
+                {
+                    case nameof(Department.DepartmentName):
+                        validationErrorProvider.SetError(departmentNameTextbox, error.ErrorMessage);
+                        break;
+                    case nameof(Department.Description):
+                        validationErrorProvider.SetError(departmentDescriptionTextBox, error.ErrorMessage);
+                        break;
+                }
+            }
+        }
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
