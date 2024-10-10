@@ -1,4 +1,8 @@
-﻿using System;
+﻿using BusinessLayer.Services;
+using CommonLayer.Entities;
+using FluentValidation.Results;
+using PresentationLayer.Validations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,24 +16,62 @@ namespace PresentationLayer.Forms
 {
     public partial class DepartmentForm : Form
     {
-        private MainForm mainForm;
+        private MainForm _mainForm;
+        private DepartmentService _departmentService;
         public DepartmentForm(MainForm mainForm)
         {
+            this._mainForm = mainForm;
+            this._departmentService = new DepartmentService();
             InitializeComponent();
-            this.mainForm = mainForm;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            mainForm.Show();
+            _mainForm.Show();
             this.Close();
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
-        {
-            // Asegurarse de que MainForm se muestre si PositionForm se cierra
-            mainForm.Show();
+        { 
+            _mainForm.Show();
             base.OnFormClosed(e);
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            Department _department = new Department();
+            _department.DepartmentName = departmentNameTextbox.Text;
+            _department.Description = departmentDescriptionTextBox.Text;
+
+            DepartmentValidator depValidator = new DepartmentValidator();
+            ValidationResult results = depValidator.Validate(_department);
+
+            if (!results.IsValid)
+            {
+                DisplayValidationErrors(results);
+                return;
+            }
+
+            _departmentService.AddDepartment(_department);
+
+            this.Close();
+        }
+        private void DisplayValidationErrors(ValidationResult result)
+        {
+            validationErrorProvider.Clear();
+
+            foreach (var error in result.Errors)
+            {
+                switch (error.PropertyName)
+                {
+                    case nameof(Department.DepartmentName):
+                        validationErrorProvider.SetError(departmentNameTextbox, error.ErrorMessage);
+                        break;
+                    case nameof(Department.Description):
+                        validationErrorProvider.SetError(departmentDescriptionTextBox, error.ErrorMessage);
+                        break;
+                }
+            }
         }
     }
 }
