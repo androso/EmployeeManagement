@@ -1,5 +1,7 @@
 ﻿using BusinessLayer.Services;
 using CommonLayer.Entities;
+using FluentValidation.Results;
+using PresentationLayer.Validations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,19 +57,50 @@ namespace PresentationLayer.Forms
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            _employeeService.UpdateEmployee(new Employee
-            {
-                Id = selectedEmployee.Id,
-                FullName = fullNameTextbox.Text,
-                DateOfBirth = DateTime.Parse(birthDate.Text),
-                HireDate = DateTime.Parse(hireDate.Text),
-                Phone = phone.Text,
-                PositionId = (int)positionCombobox.SelectedValue
-            });
+            Employee emp = new Employee();
+            emp.FullName = fullNameTextbox.Text;
+            emp.DateOfBirth = DateTime.Parse(birthDate.Text);
+            emp.HireDate = DateTime.Parse(hireDate.Text);
+            emp.Phone = phone.Text;
+            emp.PositionId = (int)positionCombobox.SelectedValue;
 
-            this.Close();
-            mainForm.Show();
-            
+            EmployeeValidator empValidator = new EmployeeValidator();
+            ValidationResult res = empValidator.Validate(emp);
+
+            if (!res.IsValid)
+            {
+                DisplayValidationErrors(res);
+                return;
+            }
+            else
+            {
+                _employeeService.UpdateEmployee(emp);
+                this.Close();
+                mainForm.Show();
+            }
+        }
+        private void DisplayValidationErrors(ValidationResult result)
+        {
+            validationErrorProvider.Clear();
+
+            foreach (var error in result.Errors)
+            {
+                switch (error.PropertyName)
+                {
+                    case nameof(Employee.FullName):
+                        validationErrorProvider.SetError(fullNameTextbox, error.ErrorMessage);
+                        break;
+                    case nameof(Employee.DateOfBirth):
+                        validationErrorProvider.SetError(birthDate, error.ErrorMessage);
+                        break;
+                    case nameof(Employee.HireDate):
+                        validationErrorProvider.SetError(hireDate, error.ErrorMessage);
+                        break;
+                    case nameof(Employee.Phone):
+                        validationErrorProvider.SetError(phone, error.ErrorMessage);
+                        break;
+                }
+            }
         }
     }
 }

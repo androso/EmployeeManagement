@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditEmployee));
             groupBox1 = new GroupBox();
             positionCombobox = new ComboBox();
@@ -43,8 +44,10 @@
             hireDate = new DateTimePicker();
             fullNameTextbox = new TextBox();
             phone = new TextBox();
+            validationErrorProvider = new ErrorProvider(components);
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)validationErrorProvider).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -189,6 +192,10 @@
             phone.Size = new Size(235, 34);
             phone.TabIndex = 6;
             // 
+            // validationErrorProvider
+            // 
+            validationErrorProvider.ContainerControl = this;
+            // 
             // EditEmployee
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -200,6 +207,7 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)validationErrorProvider).EndInit();
             ResumeLayout(false);
         }
 
@@ -219,5 +227,6 @@
         private TextBox fullNameTextbox;
         private TextBox phone;
         private ComboBox positionCombobox;
+        private ErrorProvider validationErrorProvider;
     }
 }
