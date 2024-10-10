@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             editDepartmentGroupbox = new GroupBox();
             departmentCombobox = new ComboBox();
             departmentLabel = new Label();
@@ -38,7 +39,9 @@
             positionNameLabel = new Label();
             btnGuardar = new Button();
             positionNameTextbox = new TextBox();
+            validationErrorProvider = new ErrorProvider(components);
             editDepartmentGroupbox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)validationErrorProvider).BeginInit();
             SuspendLayout();
             // 
             // editDepartmentGroupbox
@@ -144,6 +147,10 @@
             positionNameTextbox.Size = new Size(382, 34);
             positionNameTextbox.TabIndex = 7;
             // 
+            // validationErrorProvider
+            // 
+            validationErrorProvider.ContainerControl = this;
+            // 
             // EditPosition
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -154,6 +161,7 @@
             Text = "EditPosition";
             editDepartmentGroupbox.ResumeLayout(false);
             editDepartmentGroupbox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)validationErrorProvider).EndInit();
             ResumeLayout(false);
         }
 
@@ -169,5 +177,6 @@
         private TextBox baseSalaryTextbox;
         private Label departmentLabel;
         private ComboBox departmentCombobox;
+        private ErrorProvider validationErrorProvider;
     }
 }

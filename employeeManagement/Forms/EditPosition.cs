@@ -1,5 +1,7 @@
 ﻿using BusinessLayer.Services;
 using CommonLayer.Entities;
+using FluentValidation.Results;
+using PresentationLayer.Validations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -51,9 +53,33 @@ namespace PresentationLayer.Forms
                 _position.PositionName = positionNameTextbox.Text;
                 _position.DepartmentId = (int)departmentCombobox.SelectedValue;
 
-                _positionService.UpdatePosition(_position);
+                PositionValidator posValidator = new PositionValidator();
+                ValidationResult res = posValidator.Validate(_position);
+                if (!res.IsValid)
+                {
+                    DisplayValidationErrors(res);
+                    return;
+                } else {
+                    _positionService.UpdatePosition(_position);
+                    this.Close();
+                }
+            }
+        }
+        private void DisplayValidationErrors(ValidationResult result)
+        {
+            validationErrorProvider.Clear();
 
-                this.Close();
+            foreach (var error in result.Errors)
+            {
+                switch (error.PropertyName)
+                {
+                    case nameof(Position.PositionName):
+                        validationErrorProvider.SetError(positionNameTextbox, error.ErrorMessage);
+                        break;
+                    case nameof(Position.BaseSalary):
+                        validationErrorProvider.SetError(baseSalaryTextbox, error.ErrorMessage);
+                        break;
+                }
             }
         }
     }
