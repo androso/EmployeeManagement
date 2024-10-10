@@ -50,4 +50,18 @@ VALUES ('María García', '1985-07-15', '2023-09-01', '(555) 123-4567', 1);
 SELECT * FROM Employees;
 */
 
-SELECT * FROM Positions;
+-- First, we need to drop the existing foreign key constraints
+ALTER TABLE Positions
+DROP CONSTRAINT IF EXISTS FK_Positions_Departments;
+
+ALTER TABLE Employees
+DROP CONSTRAINT IF EXISTS FK_Employees_Positions;
+
+-- Now, we can add the new foreign key constraints with cascading delete
+ALTER TABLE Positions
+ADD CONSTRAINT FK_Positions_Departments
+FOREIGN KEY (DepartmentId) REFERENCES Departments(Id) ON DELETE CASCADE;
+
+ALTER TABLE Employees
+ADD CONSTRAINT FK_Employees_Positions
+FOREIGN KEY (PositionId) REFERENCES Positions(Id) ON DELETE CASCADE;

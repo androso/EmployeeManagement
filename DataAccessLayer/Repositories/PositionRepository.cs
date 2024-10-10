@@ -37,7 +37,7 @@ namespace DataAccessLayer.Repositories
                     {
                         Id = (int)reader["Id"],
                         PositionName = (string)reader["PositionName"],
-                        BaseSalary = (int)(decimal)reader["BaseSalary"],
+                        BaseSalary = (decimal)reader["BaseSalary"],
                         DepartmentId = (int)reader["DepartmentId"]
                     };
 

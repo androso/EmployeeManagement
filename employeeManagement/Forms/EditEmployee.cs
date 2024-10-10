@@ -32,12 +32,9 @@ namespace PresentationLayer.Forms
             hireDate.Text = selectedEmployee.HireDate.ToString();
             phone.Text = selectedEmployee.Phone;
 
-            // Populate the positionCombobox with available positions
             positionCombobox.DataSource = _positionService.GetAllPositions();
             positionCombobox.DisplayMember = "PositionName";
             positionCombobox.ValueMember = "Id";
-
-            // Select the position with id == selectedEmployee.position
             positionCombobox.SelectedValue = selectedEmployee.PositionId;
         }
 

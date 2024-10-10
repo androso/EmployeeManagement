@@ -65,8 +65,6 @@ namespace PresentationLayer.Forms
                 // Obtener el valor seleccionado del combobox1
                 string selectedValue = comboBox1.SelectedItem.ToString();
 
-                // Si es empleado, abrir el formulario de empleado con los datos del empleado seleccionado
-
                 if (selectedValue == "Empleado")
                 {
                     Employee selectedEmployee = dataGridView1.SelectedRows[0].DataBoundItem as Employee;
@@ -81,47 +79,27 @@ namespace PresentationLayer.Forms
                         MessageBox.Show("No se pudo obtener el empleado seleccionado.");
                     }
                 }
-                // Si es departamento, abrir el formulario de departamento con los datos del departamento seleccionado
                 else if (selectedValue == "Departamento")
                 {
-                    // Obtener el departamento seleccionado
-                    Department selectedDepartment = dataGridView1.SelectedRows[0].DataBoundItem as  Department;
+                    Department selectedDepartment = dataGridView1.SelectedRows[0].DataBoundItem as Department;
 
                     EditDepartment editDepartmentForm = new EditDepartment(this, selectedDepartment);
                     editDepartmentForm.Show();
                     editDepartmentForm.FormClosed += (s, args) => dataGridView1.DataSource = _departmentService.GetAllDepartments();
                 }
-                // Si es posición, abrir el formulario de posición con los datos de la posición seleccionada
                 else if (selectedValue == "Posición")
                 {
-                    // Obtener la posición seleccionada
-                    //Position selectedPosition = (Position)dataGridView1.SelectedRows[0].DataBoundItem;
-
-                    // Abrir el formulario de posición con los datos de la posición seleccionada
-                    //PositionForm positionForm = new PositionForm(this, selectedPosition);
-                    //positionForm.Show();
-                    //this.Hide();
+                    Position selectedPosition = dataGridView1.SelectedRows[0].DataBoundItem as Position;
+                    
+                    EditPosition editPositionForm = new EditPosition(this, selectedPosition);
+                    editPositionForm.Show();
+                    editPositionForm.FormClosed += (s, args) => dataGridView1.DataSource = _positionService.GetAllPositions();
                 }
             }
             else
             {
                 MessageBox.Show("Seleccione un registro");
             }
-        }
-
-        private void EmployeForm_FormClosed(object? sender, FormClosedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void EditDepartmentForm_FormClosed(object? sender, FormClosedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
