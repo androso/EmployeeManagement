@@ -31,5 +31,10 @@ namespace PresentationLayer.Forms
             mainForm.Show();
             base.OnFormClosed(e);
         }
+
+        private void DepartmentForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

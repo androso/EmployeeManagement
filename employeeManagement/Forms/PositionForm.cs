@@ -11,13 +11,14 @@ namespace PresentationLayer.Forms
         {
             InitializeComponent();
             this.mainForm = mainForm;
+
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-           
+
             mainForm.Show();
-            this.Close(); 
+            this.Close();
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
