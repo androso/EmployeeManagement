@@ -28,49 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PositionForm));
             btnSalir = new Button();
-            createPosition = new Label();
-            namePosition = new Label();
+            createPositionLabel = new Label();
+            namePositionLabel = new Label();
             salaryLabel = new Label();
             departmentLabel = new Label();
-            SelectDepartment = new ComboBox();
+            SelectDepartmentTextBox = new ComboBox();
             AddSalaryTextBox = new TextBox();
-            addNamePosition = new TextBox();
+            PositionTextBox = new TextBox();
             btnGuardar = new Button();
             positionGroupBox = new GroupBox();
+            pictureBoxPosition = new PictureBox();
             positionGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxPosition).BeginInit();
             SuspendLayout();
             // 
             // btnSalir
             // 
+            btnSalir.BackColor = Color.FromArgb(192, 255, 255);
             btnSalir.Font = new Font("Stencil", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSalir.Location = new Point(357, 515);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(131, 35);
             btnSalir.TabIndex = 0;
             btnSalir.Text = "Salir";
-            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click;
             // 
-            // createPosition
+            // createPositionLabel
             // 
-            createPosition.AutoSize = true;
-            createPosition.Font = new Font("Stencil", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            createPosition.Location = new Point(162, 35);
-            createPosition.Name = "createPosition";
-            createPosition.Size = new Size(238, 33);
-            createPosition.TabIndex = 1;
-            createPosition.Text = "Crear posición";
+            createPositionLabel.AutoSize = true;
+            createPositionLabel.Font = new Font("Stencil", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            createPositionLabel.Location = new Point(162, 35);
+            createPositionLabel.Name = "createPositionLabel";
+            createPositionLabel.Size = new Size(238, 33);
+            createPositionLabel.TabIndex = 1;
+            createPositionLabel.Text = "Crear posición";
             // 
-            // namePosition
+            // namePositionLabel
             // 
-            namePosition.AutoSize = true;
-            namePosition.Font = new Font("Stencil", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            namePosition.Location = new Point(40, 134);
-            namePosition.Name = "namePosition";
-            namePosition.Size = new Size(248, 27);
-            namePosition.TabIndex = 2;
-            namePosition.Text = "Nombre de Posicion";
+            namePositionLabel.AutoSize = true;
+            namePositionLabel.Font = new Font("Stencil", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            namePositionLabel.Location = new Point(40, 134);
+            namePositionLabel.Name = "namePositionLabel";
+            namePositionLabel.Size = new Size(248, 27);
+            namePositionLabel.TabIndex = 2;
+            namePositionLabel.Text = "Nombre de Posicion";
             // 
             // salaryLabel
             // 
@@ -92,13 +96,13 @@
             departmentLabel.TabIndex = 4;
             departmentLabel.Text = "Departamento";
             // 
-            // SelectDepartment
+            // SelectDepartmentTextBox
             // 
-            SelectDepartment.FormattingEnabled = true;
-            SelectDepartment.Location = new Point(357, 347);
-            SelectDepartment.Name = "SelectDepartment";
-            SelectDepartment.Size = new Size(226, 28);
-            SelectDepartment.TabIndex = 5;
+            SelectDepartmentTextBox.FormattingEnabled = true;
+            SelectDepartmentTextBox.Location = new Point(357, 347);
+            SelectDepartmentTextBox.Name = "SelectDepartmentTextBox";
+            SelectDepartmentTextBox.Size = new Size(226, 28);
+            SelectDepartmentTextBox.TabIndex = 5;
             // 
             // AddSalaryTextBox
             // 
@@ -108,34 +112,37 @@
             AddSalaryTextBox.Size = new Size(263, 28);
             AddSalaryTextBox.TabIndex = 8;
             // 
-            // addNamePosition
+            // PositionTextBox
             // 
-            addNamePosition.Location = new Point(40, 184);
-            addNamePosition.Multiline = true;
-            addNamePosition.Name = "addNamePosition";
-            addNamePosition.Size = new Size(543, 40);
-            addNamePosition.TabIndex = 9;
+            PositionTextBox.Location = new Point(40, 184);
+            PositionTextBox.Multiline = true;
+            PositionTextBox.Name = "PositionTextBox";
+            PositionTextBox.Size = new Size(543, 40);
+            PositionTextBox.TabIndex = 9;
             // 
             // btnGuardar
             // 
+            btnGuardar.BackColor = Color.FromArgb(192, 255, 255);
             btnGuardar.Font = new Font("Stencil", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnGuardar.Location = new Point(125, 515);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(131, 35);
             btnGuardar.TabIndex = 12;
             btnGuardar.Text = "Guardar";
-            btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.UseVisualStyleBackColor = false;
             // 
             // positionGroupBox
             // 
+            positionGroupBox.BackColor = Color.White;
+            positionGroupBox.Controls.Add(pictureBoxPosition);
             positionGroupBox.Controls.Add(btnGuardar);
-            positionGroupBox.Controls.Add(addNamePosition);
+            positionGroupBox.Controls.Add(PositionTextBox);
             positionGroupBox.Controls.Add(AddSalaryTextBox);
-            positionGroupBox.Controls.Add(SelectDepartment);
+            positionGroupBox.Controls.Add(SelectDepartmentTextBox);
             positionGroupBox.Controls.Add(departmentLabel);
             positionGroupBox.Controls.Add(salaryLabel);
-            positionGroupBox.Controls.Add(namePosition);
-            positionGroupBox.Controls.Add(createPosition);
+            positionGroupBox.Controls.Add(namePositionLabel);
+            positionGroupBox.Controls.Add(createPositionLabel);
             positionGroupBox.Controls.Add(btnSalir);
             positionGroupBox.Location = new Point(370, 26);
             positionGroupBox.Name = "positionGroupBox";
@@ -143,10 +150,20 @@
             positionGroupBox.TabIndex = 13;
             positionGroupBox.TabStop = false;
             // 
+            // pictureBoxPosition
+            // 
+            pictureBoxPosition.Image = (Image)resources.GetObject("pictureBoxPosition.Image");
+            pictureBoxPosition.Location = new Point(457, 26);
+            pictureBoxPosition.Name = "pictureBoxPosition";
+            pictureBoxPosition.Size = new Size(126, 105);
+            pictureBoxPosition.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxPosition.TabIndex = 14;
+            pictureBoxPosition.TabStop = false;
+            // 
             // PositionForm
             // 
             AutoScaleMode = AutoScaleMode.None;
-            BackColor = SystemColors.ActiveCaption;
+            BackColor = Color.FromArgb(128, 255, 255);
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1320, 671);
             Controls.Add(positionGroupBox);
@@ -154,20 +171,22 @@
             Text = "PositionForm";
             positionGroupBox.ResumeLayout(false);
             positionGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxPosition).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Button btnSalir;
-        private Label createPosition;
-        private Label namePosition;
+        private Label createPositionLabel;
+        private Label namePositionLabel;
         private Label salaryLabel;
         private Label departmentLabel;
-        private ComboBox SelectDepartment;
+        private ComboBox SelectDepartmentTextBox;
         private TextBox AddSalaryTextBox;
-        private TextBox addNamePosition;
+        private TextBox PositionTextBox;
         private Button btnGuardar;
         private GroupBox positionGroupBox;
+        private PictureBox pictureBoxPosition;
     }
 }
