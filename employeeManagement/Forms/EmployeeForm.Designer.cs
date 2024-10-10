@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeForm));
             label1 = new Label();
             birthDateLabel = new Label();
@@ -40,11 +41,13 @@
             pictureBox1 = new PictureBox();
             btnGuardar = new Button();
             groupBox1 = new GroupBox();
-            btnSalir = new Button();
             positionCombobox = new ComboBox();
             label5 = new Label();
+            btnSalir = new Button();
+            validationErrorProvider = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)validationErrorProvider).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -159,17 +162,6 @@
             groupBox1.TabIndex = 13;
             groupBox1.TabStop = false;
             // 
-            // btnSalir
-            // 
-            btnSalir.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSalir.Location = new Point(171, 563);
-            btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(133, 37);
-            btnSalir.TabIndex = 18;
-            btnSalir.Text = "Salir";
-            btnSalir.UseVisualStyleBackColor = true;
-            btnSalir.Click += btnSalir_Click_1;
-            // 
             // positionCombobox
             // 
             positionCombobox.FormattingEnabled = true;
@@ -188,6 +180,21 @@
             label5.TabIndex = 21;
             label5.Text = "Posición :";
             // 
+            // btnSalir
+            // 
+            btnSalir.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSalir.Location = new Point(171, 563);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(133, 37);
+            btnSalir.TabIndex = 18;
+            btnSalir.Text = "Salir";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click_1;
+            // 
+            // validationErrorProvider
+            // 
+            validationErrorProvider.ContainerControl = this;
+            // 
             // EmployeeForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -200,6 +207,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)validationErrorProvider).EndInit();
             ResumeLayout(false);
         }
 
@@ -219,5 +227,6 @@
         private Button btnSalir;
         private ComboBox positionCombobox;
         private Label label5;
+        private ErrorProvider validationErrorProvider;
     }
 }
