@@ -85,6 +85,7 @@
             btnCancel.TabIndex = 18;
             btnCancel.Text = "Cancelar";
             btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // departmentDescriptionLabel
             // 

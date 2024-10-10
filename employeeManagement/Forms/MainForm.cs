@@ -43,14 +43,13 @@ namespace PresentationLayer.Forms
         {
             PositionForm positionForm = new PositionForm(this);
             positionForm.Show();
-            this.Hide();
         }
 
         private void btnDepartment_Click(object sender, EventArgs e)
         {
             DepartmentForm departmentForm = new DepartmentForm(this);
             departmentForm.Show();
-            this.Hide();
+            
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {

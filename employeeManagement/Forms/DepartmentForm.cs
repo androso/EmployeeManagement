@@ -25,14 +25,8 @@ namespace PresentationLayer.Forms
             InitializeComponent();
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            _mainForm.Show();
-            this.Close();
-        }
-
         protected override void OnFormClosed(FormClosedEventArgs e)
-        { 
+        {
             _mainForm.Show();
             base.OnFormClosed(e);
         }
@@ -72,6 +66,11 @@ namespace PresentationLayer.Forms
                         break;
                 }
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
