@@ -34,9 +34,9 @@ namespace PresentationLayer.Forms
 
         private void btnEmploye_Click(object sender, EventArgs e)
         {
-            EmployeForm employeForm = new EmployeForm(this);
-            employeForm.Show();
-            this.Hide();
+            EmployeeForm employeeForm = new EmployeeForm(this);
+            employeeForm.Show();
+            employeeForm.FormClosed += (sys, args) => LoadEmployeeData();
         }
 
         private void btnPosition_Click(object sender, EventArgs e)
